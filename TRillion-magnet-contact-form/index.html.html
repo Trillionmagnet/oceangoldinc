@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>Trillion Magnet Contact Form</title>
+  </head>
+  <body>
+    <main class="body">
+      <h1 class="contact-title">CONTACT US</h1>
+      <div class="container">
+        <div class="right">
+          <h1>You can find us at</h1>
+          <div class="contact">
+            <h2>EMAIL</h2>
+            <p>oceangoldinv@gmail.com</p>
+          </div>
+          <div class="contact">
+            <h2>PHONE</h2>
+            <p>08037788716 / 08125838838</p>
+          </div>
+          <div class="contact">
+            <h2>LOCATION</h2>
+            <p>Suite H-171 Road 3, Ikota Shopping Complex, VGC Lekki Lagos.</p>
+          </div>
+        </div>
+        <div class="Left">
+          <h1>Let's get in touch</h1>
+          <form onsubmit="sendEmail(); reset(); return false">
+            <input type="text" id="name" placeholder="Your Name" required />
+            <input type="email" id="email" placeholder="Email id" required />
+            <input type="text" id="phone" placeholder="Pone no" required />
+            <textarea
+              id="message"
+              rows="4"
+              placeholder="How can we help you?"
+            ></textarea>
+            <button type="submit">Send</button>
+          </form>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      function sendEmail() {
+        let name = document.getElementById("name").value;
+        let email = document.getElementById("email").value;
+        let phone = document.getElementById("phone").value;
+        let message = document.getElementById("message").value;
+
+        let body =
+          "NAME: " +
+          name +
+          "<br/> EMAIL: " +
+          email +
+          "<br/> PHONE No: " +
+          phone +
+          "<br/> MESSAGE: " +
+          message;
+
+        Email.send({
+          SecureToken: "ea5c47f6-1e8b-4754-bc10-8f66cb607895",
+          To: "trillionmagnetlogs@gmail.com",
+          From: "trillionmagnetlogs@gmail.com",
+          ReplyFrom: document.getElementById("email").value,
+          Subject: "Contact Form, from oceangold",
+          Body: body,
+        }).then((message) => alert(message));
+      }
+    </script>
+    <script src=" https://smtpjs.com/v3/smtp.js"></script>
+  </body>
+</html>
